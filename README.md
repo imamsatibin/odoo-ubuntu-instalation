@@ -145,7 +145,7 @@ sudo chown odoo17: /var/log/odoo17
 
 Lanjut dengan membuat file konfig
 ```
-nano /etc/odoo.conf
+nano /etc/odoo17.conf
 ```
 Jangan lupa mengganti password sesuai dengan user.
 ```
@@ -188,10 +188,10 @@ WantedBy=multi-user.target
 
 Grant akses kepada odoo17
 ```
-chown odoo17: /etc/odoo.conf
+chown odoo17: /etc/odoo17.conf
 ```
 ```
-chmod 640 /etc/odoo.conf
+chmod 640 /etc/odoo17.conf
 ```
 
 Reload config

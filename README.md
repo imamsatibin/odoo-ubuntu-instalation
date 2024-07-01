@@ -206,7 +206,7 @@ systemctl enable --now odoo17
 
 Nginx diperlukan untuk install dan aktivasi sertifikat SSL.
 ```
-apt-get install nginx
+apt-get install nginx -y
 ```
 
 Install certbot.
@@ -235,4 +235,34 @@ Paste kode cron, jalan setiap hari.
 ```
 Simpan dan exit.
 
-## Bagian III: Secure with SSL
+## Bagian IX: Secure with SSL
+```
+cd /etc/nginx/sites-available
+```
+Buat konfigurasi
+```
+nano odoo17-nginx.conf
+```
+Lalu paste file yang ada pada repository ini (nginx.conf)
+Save
+```
+sudo ln -s /etc/nginx/sites-available/odoo17-nginx.conf /etc/nginx/sites-enabled/odoo17-nginx.conf
+```
+Unlink default config
+```
+unlink /etc/nginx/sites-enabled/default
+```
+Cek ulang konfigurasi
+```
+nginx -t
+```
+Jika ok, lanjut apply konfigurasi baru
+```
+service nginx restart
+```
+
+## Final
+Default port for Odoo
+```
+http://host:8069
+```

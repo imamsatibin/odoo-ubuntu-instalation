@@ -1,4 +1,4 @@
-# Instalasi XRay pada Ubuntu 22.04.3 LTS (Jammy Jellyfish)
+# Instalasi Odoo 17 pada Ubuntu 22.04.3 LTS (Jammy Jellyfish)
 
 ## Bagian I: Ubuntu Prep
 
@@ -24,7 +24,7 @@ timedatectl set-timezone Asia/Jakarta
 
 Amankan server (proteksi layer tambahan)
 ```
-apt-get install openssh-server fail2ban
+apt-get install openssh-server fail2ban -y
 ```
 
 ## Bagian II: Packages and Libraries
@@ -98,15 +98,15 @@ useradd -m -d /opt/odoo17 -U -r -s /bin/bash odoo17
 ## Bagian VI: Install Odoo
 Login sebagai user odoo17
 ```
-su – odoo17
+su odoo17
 ```
 Pindah ke direktori kerja
 ```
-cd ~/opt/odoo17
+cd /opt/odoo17
 ```
 Clone repository dari GitHub
 ```
-git clone --branch=17.0 --depth=1 --single-branch "https://www.github.com/odoo/odoo"
+git clone --branch=17.0 --depth=1 --single-branch "https://www.github.com/odoo/odoo" odoo17
 ```
 Proses instalasi menggunakan Phyton environtment
 ```
@@ -202,7 +202,7 @@ systemctl daemon-reload
 systemctl enable --now odoo17
 ```
 
-## Bagian II: SSL Certificate
+## Bagian VIII: SSL Certificate
 
 Nginx diperlukan untuk install dan aktivasi sertifikat SSL.
 ```
@@ -224,5 +224,15 @@ certbot --nginx -d mydomain.id -m mail@mydomain.id --agree-tos
 /etc/letsencrypt/live/mydomain.id/fullchain.pem
 /etc/letsencrypt/live/mydomain.id/privkey.pem
 ```
+
+Auto renew certificates
+```
+crontab -e
+```
+Paste kode cron, jalan setiap hari.
+```
+0 12 * * * /usr/bin/certbot renew --quiet
+```
+Simpan dan exit.
 
 ## Bagian III: Secure with SSL

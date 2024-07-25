@@ -155,6 +155,7 @@ Jangan lupa mengganti password sesuai dengan user.
     db_port = False
     db_user = odoo17
     db_password = False
+    dbfilter = %h
     addons_path = /opt/odoo17/odoo17/addons, /opt/odoo17/odoo17/custom-addons
 
     log_db = False
@@ -164,6 +165,10 @@ Jangan lupa mengganti password sesuai dengan user.
     logfile = /var/log/odoo17/odoo.log
 
     proxy_mode = True
+
+    web.base.url = "https://yourdomain.id"
+    report.url = "http://localhost:8069"
+    report.url.freeze = True
 ```
 Buat service, supaya auto-run ketika system reboot
 ```
@@ -215,8 +220,21 @@ apt-get install certbot python3-certbot-nginx -y
 ```
 
 Jalankan certbot untuk request sertifikat.
+
+Command untuk single domain (automatic renewal)
 ```
 certbot --nginx -d mydomain.id -m mail@mydomain.id --agree-tos
+```
+
+Command untuk wildcard SSL (manual renewal)
+```
+certbot certonly --manual \
+--preferred-challenges=dns \
+--email admin@mydomain.id \
+--server https://acme-v02.api.letsencrypt.org/directory \
+--agree-tos \
+--manual-public-ip-logging-ok \
+-d mydomain.id, *.mydomain.id
 ```
 
 @location of the cert.
@@ -241,12 +259,12 @@ cd /etc/nginx/sites-available
 ```
 Buat konfigurasi
 ```
-nano odoo17-nginx.conf
+nano odoo-nginx.conf
 ```
 Lalu paste file yang ada pada repository ini (nginx.conf)
 Save
 ```
-sudo ln -s /etc/nginx/sites-available/odoo17-nginx.conf /etc/nginx/sites-enabled/odoo17-nginx.conf
+sudo ln -s /etc/nginx/sites-available/odoo-nginx.conf /etc/nginx/sites-enabled/odoo-nginx.conf
 ```
 Unlink default config
 ```

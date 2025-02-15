@@ -20,6 +20,7 @@ apt-get upgrade -y
 Jangan lupa, set timezone (jika belum).
 ```
 timedatectl set-timezone Asia/Jakarta
+timedatectl set-timezone Asia/Jakarta
 ```
 
 Amankan server (proteksi layer tambahan)

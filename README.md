@@ -1,6 +1,6 @@
 # Instalasi Odoo 17 pada Ubuntu 22.04.3 LTS (Jammy Jellyfish)
 
-## Bagian I -> [Unbuntu Prep] (ubuntu-prep.md)
+## Bagian I -> [Unbuntu Prep](ubuntu-prep.md)
 
 ## Bagian II: Packages and Libraries
 ```

@@ -56,6 +56,26 @@ Dilanjutkan keluar dari terminal PostgreSQL
 exit
 ```
 
+Setup tambahan ketika install PostgreSQL di OCI (Oracle Cloud Infrastructure)
+```
+sudo apt-get install iptables-persistent
+```
+
+Add rule iptables
+```
+sudo iptables -I INPUT 5 -p tcp --dport 5432 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
+```
+
+Lalu simpan supaya perubahan ini permanen
+```
+sudo netfilter-persistent save
+```
+
+Restart service postgres
+```
+sudo systemctl restart postgresql
+```
+
 ## Bagian IV: Instalasi wkhtmltopdf
 ```
 apt-get install wkhtmltopdf -y

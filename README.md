@@ -1,32 +1,6 @@
 # Instalasi Odoo 17 pada Ubuntu 22.04.3 LTS (Jammy Jellyfish)
 
-## Bagian I: Ubuntu Prep
-
-Pastikan dulu jalankan sebagai sudoer.
-```
-sudo su
-```
-
-Lalu, cek update OS.
-```
-apt-get update
-```
-
-Jalankan command upgrade.
-```
-apt-get upgrade -y
-```
-
-Jangan lupa, set timezone (jika belum).
-```
-timedatectl set-timezone Asia/Jakarta
-timedatectl set-timezone Asia/Jakarta
-```
-
-Amankan server (proteksi layer tambahan)
-```
-apt-get install openssh-server fail2ban -y
-```
+## Bagian I -> [Unbuntu Prep] (ubuntu-prep.md)
 
 ## Bagian II: Packages and Libraries
 ```

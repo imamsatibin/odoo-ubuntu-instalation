@@ -45,6 +45,10 @@ Berikan hak akses user odoo17 sebagai super user.
 ```
 ALTER USER odoo17 WITH SUPERUSER;
 ```
+Atau bisa hanya di level database saja
+```
+GRANT ALL PRIVILEGES ON DATABASE odoo17 TO odoo17;
+```
 
 Keluar dari terminal PSQL
 ```

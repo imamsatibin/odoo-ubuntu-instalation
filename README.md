@@ -33,7 +33,7 @@ su - postgres
 ```
 Buat user database dengan nama odoo17
 ```
-createuser --createdb --username postgres --no-createrole --no-superuser --pwprompt odoo17
+createuser --createdb --username postgres --no-createrole --pwprompt odoo17
 ```
 Setelah command tersebut di atas di-execute, kita akan diarahkan untuk mengisi password, ingat dan simpan, karena akan digunakan sebagai config nantinya.
 
